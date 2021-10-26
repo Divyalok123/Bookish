@@ -1,38 +1,27 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Exo&family=Lato&family=Merienda&family=Noto+Sans&family=Saira+Condensed&display=swap');
+
+/* Fonts */
+
+.f_balsamiq {
+    font-family: 'Balsamiq Sans', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.f_exo {
+    font-family: 'Exo', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.f_lato {
+    font-family: 'Lato', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.f_merienda {
+    font-family: 'Merienda', cursive;
 }
 
-.App-link {
-  color: #61dafb;
+.f_noto_sans {
+    font-family: 'Noto Sans', sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.f_saira {
+    font-family: 'Saira Condensed', sans-serif;
 }
