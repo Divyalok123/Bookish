@@ -1,0 +1,118 @@
+.home_container {
+    height: 100vh;
+}
+
+.header {
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 500ms;
+}
+
+.header_bottom {
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+}
+
+.header_bottom > p {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.home_header_down_icon {
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 1px gray;
+    cursor: pointer;
+    animation-name: updown;
+    animation-duration: 700ms;
+    transition-duration: 200ms;
+}
+
+@keyframes updown {
+    from {
+        transform: translateY(-200px);
+    }  
+
+    to {
+        transform: translateY(0px);
+    }
+}
+
+.home_header_down_icon:hover {
+    box-shadow: 0 0 1px 2px rgb(218, 216, 216);
+}
+
+.genre_list_container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.genre_list_header {
+    width: 100%;
+    padding: 30px;
+}
+
+.genre_list_header > p {
+    padding: 20px 0;
+    font-size: 40px;
+    text-align: center;
+}
+
+.genre_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    flex: auto;
+}
+
+.genre_card {
+    width: 320px;
+    height: 180px;
+    display: flex;
+    box-shadow: 1px 2px 2px 2px rgb(173, 173, 173);
+    border-radius: 20px;
+    margin: 20px 40px;
+    cursor: pointer;
+}
+
+.genre_card > span {
+    display: block;
+    margin: auto;
+    font-size: 24px;
+}
+
+.genre_card:hover {
+    transition-duration: 100ms;
+    background-color: rgb(209, 208, 208);
+    box-shadow: 1px 1px 1px 1px whitesmoke;
+}
+
+.genre_list_container > footer {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 20px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.footer_heart_icon {
+    color: red;
+}
