@@ -1,0 +1,14 @@
+.about_container header {
+    margin-top: 20px;
+    font-size: 48px;
+    text-transform: uppercase;
+}
+
+.about_page_quote {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.about_page_quote span:last-child {
+    font-weight: bold;
+}

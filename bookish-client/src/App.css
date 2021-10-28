@@ -1,6 +1,5 @@
 /* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Exo&family=Lato&family=Merienda&family=Noto+Sans&family=Saira+Condensed&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Exo&family=Gemunu+Libre&family=Lato&family=Merienda&family=Noto+Sans&family=Saira+Condensed&family=Titillium+Web&family=Yaldevi&display=swap');
 
 /* Fonts */
 
@@ -26,4 +25,37 @@
 
 .f_saira {
     font-family: 'Saira Condensed', sans-serif;
+}
+
+.f_gemunu {
+    font-family: 'Gemunu Libre', sans-serif;
+}
+
+.f_titillium {
+    font-family: 'Titillium Web', sans-serif;    
+}
+
+.f_yaldevi {
+    font-family: 'Yaldevi', sans-serif;
+}
+
+
+/* Utility classes */
+
+.link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 100px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.pointer {
+    cursor: pointer;
 }

@@ -1,13 +1,11 @@
 import { Component } from 'react';
-import { FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import './Books.css';
 
 class Books extends Component {
     render() {
-        
         return (
-            <div className="books_container">
-                <h1>Books are books and books are valuable</h1>
+            <div className="books_container container">
+                <header>Books</header>
             </div>
         )  
     }
