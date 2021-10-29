@@ -3,7 +3,17 @@ import Home from './Home/Home';
 import Books from './Books/Books';
 import Registration from './Registration/Registration';
 import About from './About/About';
-import Authors from './Authors/Authors';
+import UserBooks from './UserBooks/UserBooks';
+import BookCard from './BookCard/BookCard';
 import Profile from './Profile/Profile';
 
-export {Navbar, Home, Books, Registration, About, Authors, Profile};
+export { 
+    Navbar, 
+    Home, 
+    Books, 
+    Registration, 
+    About, 
+    UserBooks, 
+    Profile,
+    BookCard
+};

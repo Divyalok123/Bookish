@@ -1,0 +1,67 @@
+.book_card {
+    width: 250px;
+    height: 400px;
+    margin: 20px 30px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.book_img {
+    width: 95%;
+    height: 80%;
+    box-shadow: 0 2px 4px -1px black;
+    margin: auto;
+}
+
+.book_img:hover {
+    transition-duration: 150ms;
+    box-shadow: 0 1px 4px -1px grey;
+}
+
+.book_img > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.book_details {
+    margin-top: 10px;
+    text-align: left;
+    line-height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bookname {
+    font-size: 20px;
+}
+
+.bookdetail_container {
+    overflow-x: scroll;
+}
+
+.bookdetail_container > * {
+    white-space: nowrap;
+    word-wrap: unset;
+    overflow-x: scroll;
+    padding: 1px 5px;
+}
+
+.bookdetail_container > *:not(.bookname) {
+    color: rgba(65, 62, 62, 0.726);
+}
+
+.bookstar_container .star {
+    font-size: 25px;
+    color: rgb(182, 182, 182);
+}
+
+.userbooks_list {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

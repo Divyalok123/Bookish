@@ -1,6 +1,7 @@
 import './Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import Footer from '../Footer/Footer';
 
 function Home() {
 
@@ -56,15 +57,7 @@ function Home() {
                         <span>Comedy</span>
                     </div>
                 </div>
-                <footer>
-                    <span className="f_saira">
-                        Developed with 
-                        &nbsp;
-                        <FontAwesomeIcon icon={ faHeart } className="footer_heart_icon" />
-                        &nbsp; 
-                        by Divyalok & Shubham
-                    </span>
-                </footer>        
+                <Footer />
             </div>
         </div>
     )

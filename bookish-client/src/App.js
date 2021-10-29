@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Switch } from 'react-router-dom'; 
-import { Navbar, Home, Books, Registration, Authors, About, Profile } from './components/index';
+import { Navbar, Home, Books, Registration, About, Profile, UserBooks } from './components/index';
 
 function App() {
   return (
@@ -11,8 +11,13 @@ function App() {
         <Route path="/books" component={ Books }></Route>
         <Route path="/registration" component={ Registration }></Route>
         <Route path="/about" component={ About }></Route>
-        <Route path="/authors" component={ Authors }></Route>
+        <Route path="/mybooks">
+          <UserBooks optionSelected="all" page="mybooks" />
+        </Route>
         <Route path="/profile" component={ Profile }></Route>
+        <Route path="/favourites">
+          <UserBooks optionSelected="all" page="favourites" />
+        </Route>
       </Switch>
     </div>
   );

@@ -42,11 +42,7 @@ class Navbar extends Component {
                             Books
                         </button> 
                     </Link> 
-                    <Link className="link pointer nav_button" to="/authors">
-                        <button className="f_lato pointer"> 
-                            Authors
-                        </button>             
-                    </Link> 
+                    
                     {/* { this.state.isLoggedIn ? ( */}
                         <Link className="link pointer" to="/registration">
                             <button className="f_nato_sans opp_nav_button pointer"> 
@@ -68,9 +64,21 @@ class Navbar extends Component {
                                         Profile
                                     </div>
                                 </Link>
-                                <div className="nav_dropdown_item">Item 2</div>
-                                <div className="nav_dropdown_item">Item 3</div>
-                                <div className="nav_dropdown_item">Item 4</div>
+                                <Link className="link" to="/mybooks">
+                                    <div className="nav_dropdown_item">
+                                        My Books
+                                    </div>
+                                </Link>
+                                <Link className="link" to="/favourites">
+                                    <div className="nav_dropdown_item">
+                                        Favourites
+                                    </div>
+                                </Link>
+                                <Link className="link" to="/logout">
+                                    <div className="nav_dropdown_item">
+                                        Logout
+                                    </div>
+                                </Link>
                             </div>
                         </div> 
                     {/* )} */}
