@@ -45,23 +45,25 @@
     border: none;
 }
 
-.nav_button {
+.nav_button > button {
     background-color: transparent;
 }
 
 .nav_button:hover {
+    border-radius: 5px;
     transition-duration: 150ms;
-    box-shadow: -1px 1px 2px 1px black;
+    box-shadow: 2px 1px 2px 1px black inset;
 }
 
 .opp_nav_button {
-    background-color: black;
+    background-color: rgba(70, 69, 69, 0.952);
     color: white;
+    border-radius: 5px;
 }
 
 .opp_nav_button:hover {
     transition-duration: 150ms;
-    background-color: linear-gradient(to left, rgb(199, 199, 199), black);
+    background-color: rgba(26, 24, 24, 0.884);
 }
 
 .nav_profile_container {
@@ -74,7 +76,11 @@
 .nav_profile_img {
     border-radius: 50%;
     height: 60%;
-    box-shadow: 0px 0px 2px 0.5px grey;
+    box-shadow: 0px 0px 1px 0.2px grey;
+}
+
+.nav_profile_img:hover {
+    box-shadow: 0 0 1px 0.2px rgb(187, 186, 186);
 }
 
 .nav_profile_dropdown {

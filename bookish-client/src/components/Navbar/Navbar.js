@@ -7,6 +7,13 @@ import './Navbar.css';
 class Navbar extends Component {
     profileClickCount = 0;
 
+    constructor() {
+        super();
+        this.state = {
+            isLoggedIn: true
+        }
+    }
+
     handleProfileImageClick = () => {
         let ele = document.getElementsByClassName("nav_profile_dropdown")[0];
         if(this.profileClickCount) {
@@ -25,48 +32,48 @@ class Navbar extends Component {
                     <img src={ logoImg }  alt="logo" className="navleft_img" /> 
                 </Link> 
                 <div className="navright">
-                    <Link className="link pointer" to="/about">
-                        <button className="f_lato nav_button pointer"> 
+                    <Link className="link pointer nav_button" to="/about">
+                        <button className="f_lato pointer"> 
                             About
                         </button> 
                     </Link> 
-                    <Link className="link pointer" to="/books">
-                        <button className="f_lato nav_button pointer">
+                    <Link className="link pointer nav_button" to="/books">
+                        <button className="f_lato pointer">
                             Books
                         </button> 
                     </Link> 
-                    <Link className="link pointer" to="/authors">
-                        <button className="f_lato nav_button pointer"> 
+                    <Link className="link pointer nav_button" to="/authors">
+                        <button className="f_lato pointer"> 
                             Authors
                         </button>             
                     </Link> 
-                    { /* If not logged in */ } 
-                    <Link className="link pointer" to="/registration">
-                        <button className="f_nato_sans opp_nav_button pointer"> 
-                            Register
-                        </button> 
-
-                    </Link> 
-                    { /* Else */ } 
-                    <div className="nav_profile_container" >
-                        <img 
-                            src={ dummyProfileImg }
-                            alt="nav_profile_img"
-                            className="nav_profile_img" 
-                            onClick={this.handleProfileImageClick}
-                        />
-                        <div className="nav_profile_dropdown f_exo">
-                            <div className="upward_arrow"></div>
-                            <Link className="link" to="/profile">
-                                <div className="nav_dropdown_item">
-                                    Profile
-                                </div>
-                            </Link>
-                            <div className="nav_dropdown_item">Item 2</div>
-                            <div className="nav_dropdown_item">Item 3</div>
-                            <div className="nav_dropdown_item">Item 4</div>
-                        </div>
-                    </div> 
+                    {/* { this.state.isLoggedIn ? ( */}
+                        <Link className="link pointer" to="/registration">
+                            <button className="f_nato_sans opp_nav_button pointer"> 
+                                Register
+                            </button> 
+                        </Link> 
+                    {/* ) : ( */}
+                        <div className="nav_profile_container" >
+                            <img 
+                                src={ dummyProfileImg }
+                                alt="nav_profile_img"
+                                className="nav_profile_img" 
+                                onClick={this.handleProfileImageClick}
+                            />
+                            <div className="nav_profile_dropdown f_exo">
+                                <div className="upward_arrow"></div>
+                                <Link className="link" to="/profile">
+                                    <div className="nav_dropdown_item">
+                                        Profile
+                                    </div>
+                                </Link>
+                                <div className="nav_dropdown_item">Item 2</div>
+                                <div className="nav_dropdown_item">Item 3</div>
+                                <div className="nav_dropdown_item">Item 4</div>
+                            </div>
+                        </div> 
+                    {/* )} */}
                 </div> 
             </div>
         )

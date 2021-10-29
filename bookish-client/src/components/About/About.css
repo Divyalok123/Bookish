@@ -12,3 +12,60 @@
 .about_page_quote span:last-child {
     font-weight: bold;
 }
+
+.about_content {
+    width: 70%;
+    margin: 30px auto auto auto;
+    text-align: left;
+    flex-grow: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.about_content .column {
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 30px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.about_content .column2 {
+    /* height: 60%; */
+    /* width: 50%; */
+    overflow: hidden;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.about_page_img {
+    width: 100%;
+    object-fit: contain cover;
+}
+
+@media screen and (max-width: 1500px) {
+    .about_content {
+        width: 90%;
+        flex-direction: column-reverse;
+    }
+
+    .about_content .column1 {
+        width: 100%;
+    }
+
+    .about_content .column2 {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .about_content .column2 {
+        width: 90%;
+    }
+}
