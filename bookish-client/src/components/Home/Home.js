@@ -1,7 +1,9 @@
-import './Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
+import './Home.css';
+
 
 function Home() {
 
@@ -32,30 +34,78 @@ function Home() {
                     <p className="f_saira">What would you like to read ?</p>
                 </div>
                 <div className="genre_list">
-                    <div className="genre_card">
+                    <Link 
+                        className="link genre_card" 
+                        to={{
+                            pathname: '/books',
+                            optionSelected: "thriller"
+                        }}
+                    >  
                         <span>Thriller</span>
-                    </div>
-                    <div className="genre_card">
+                    </Link>
+                    <Link 
+                        className="link genre_card" 
+                        to={{
+                            pathname: '/books',
+                            optionSelected: "crime"
+                        }}
+                    >  
                         <span>Crime</span>
-                    </div>
-                    <div className="genre_card">
+                    </Link>
+                    <Link 
+                        className="link genre_card" 
+                        to={{
+                            pathname: '/books',
+                            optionSelected: "romance"
+                        }}
+                    >  
                         <span>Romance</span>
-                    </div>
-                    <div className="genre_card">
+                    </Link>
+                    <Link 
+                        className="link genre_card" 
+                        to={{
+                            pathname: '/books',
+                            optionSelected: "suspense"
+                        }}
+                    >  
                         <span>Suspense</span>
-                    </div>
-                    <div className="genre_card">
+                    </Link>
+                    <Link 
+                        className="link genre_card" 
+                        to={{
+                            pathname: '/books',
+                            optionSelected: "horror"
+                        }}
+                    >  
                         <span>Horror</span>
-                    </div>
-                    <div className="genre_card">
-                        <span>Action</span>
-                    </div>
-                    <div className="genre_card">
+                    </Link>
+                    <Link 
+                        className="link genre_card" 
+                        to={{
+                            pathname: '/books',
+                            optionSelected: "kids"
+                        }}
+                    >  
                         <span>Kids</span>
-                    </div>
-                    <div className="genre_card">
+                    </Link>
+                    <Link 
+                        className="link genre_card" 
+                        to={{
+                            pathname: '/books',
+                            optionSelected: "comedy"
+                        }}
+                    >  
                         <span>Comedy</span>
-                    </div>
+                    </Link>
+                    <Link 
+                        className="link genre_card" 
+                        to={{
+                            pathname: '/books',
+                            optionSelected: "action"
+                        }}
+                    >  
+                        <span>Action</span>
+                    </Link>
                 </div>
                 <Footer />
             </div>

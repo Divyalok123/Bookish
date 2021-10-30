@@ -3,11 +3,10 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 import dummyBookImg from '../../assets/dummyBookImg.jpg';
 import './BookCard.css'
 
-function BookCard(props) {
+function BookCard({imgsrc, name, author, genre}) {
     let starClickCount = 1;
 
     let changeStar = (e) => {
-        console.log(e);
         if(starClickCount) {
             e.target.style.color = "rgb(245, 212, 29)";
             starClickCount--;
@@ -15,20 +14,18 @@ function BookCard(props) {
             e.target.style.color = "rgb(182, 182, 182)";
             starClickCount++;
         }
-
-        console.log(e.target.style.color);
     }
 
     return (
-        <div className="book_card">
+        <div className="book_card card">
             <div className="book_img pointer">
-                <img src={dummyBookImg} alt="Dummy book img" />
+                <img src={ (imgsrc || dummyBookImg) } alt="Dummy book img" />
             </div>
             <div className="book_details">
                 <div className="bookdetail_container">
-                    <div className="bookname">Promised Deadland</div>
-                    <div className="bookauthor">Kim Jong Un</div>
-                    <div className="bookgenre">Thriller, Horror</div>
+                    <div className="bookname">{name || "Promised Deadland"}</div>
+                    <div className="bookauthor">{author || "Kim Jong Un"}</div>
+                    <div className="bookgenre">{genre || "Thriller, Horror"}</div>
                 </div>
                 <div className="bookstar_container">
                     <FontAwesomeIcon icon={ faStar } className="star pointer" onClick={changeStar}/>

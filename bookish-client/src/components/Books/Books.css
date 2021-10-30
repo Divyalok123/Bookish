@@ -1,0 +1,22 @@
+.books_header {
+    /* border-top: 2px solid black; */
+    border-bottom: 2px solid black;
+    padding: 35px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.books_header > p {
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.books_list {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

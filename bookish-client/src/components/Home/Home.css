@@ -96,7 +96,7 @@
     cursor: pointer;
 }
 
-.genre_card > span {
+.genre_card > .link, span {
     display: block;
     margin: auto;
     font-size: 24px;
