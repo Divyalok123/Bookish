@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import dummyBookImg from '../../assets/dummyBookImg.jpg';
+import resume from '../../assets/resume.pdf'; 
 import './BookCard.css'
 
 function BookCard({imgsrc, name, author, genre}) {
@@ -19,7 +20,9 @@ function BookCard({imgsrc, name, author, genre}) {
     return (
         <div className="book_card card">
             <div className="book_img pointer">
-                <img src={ (imgsrc || dummyBookImg) } alt="Dummy book img" />
+                <a target="_blank" href={resume} rel="noreferrer">
+                    <img src={ (imgsrc || dummyBookImg) } alt="Dummy book img" />
+                </a>
             </div>
             <div className="book_details">
                 <div className="bookdetail_container">

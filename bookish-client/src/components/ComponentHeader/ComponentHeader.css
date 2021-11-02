@@ -15,6 +15,34 @@
     font-weight: bold;
 }
 
+.header_search_bar {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(177, 175, 175);
+}
+
+.header_search_bar > * {
+    display: block;
+}
+
+.header_search_box {
+    width: 300px;
+    font-size: 17px;
+    outline: none;
+    border: none;
+    padding: 7px;
+}
+
+.header_search_icon {
+    font-size: 20px;
+    padding: 7px;
+    border-left: 1px solid black;
+    color: rgb(44, 44, 44);
+}
+
 .select_genre {
     width: 200px;
     font-size: 17px;

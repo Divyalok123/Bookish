@@ -1,12 +1,20 @@
 .about_container header {
     margin-top: 20px;
+    width: 100%;
     font-size: 48px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .about_page_quote {
     margin-top: 15px;
     font-size: 18px;
+    width: 100%;
+    text-align: center;
+}
+
+.about_page_quote > span {
+    display: inline;
 }
 
 .about_page_quote span:last-child {

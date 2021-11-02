@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logoImg from '../../assets/full_logo.png';
-import dummyProfileImg from '../../assets/dummy_person.png';
+import dummyProfileImg from '../../assets/dummyPerson.png';
 import './Navbar.css';
 
 class Navbar extends Component {
@@ -9,6 +9,7 @@ class Navbar extends Component {
 
     constructor() {
         super();
+        this.dropdownRef = React.createRef();
         this.state = {
             isLoggedIn: true
         }
@@ -23,6 +24,21 @@ class Navbar extends Component {
             ele.style.display = "block";
             this.profileClickCount = 1;
         }
+    }
+
+    handleClickOutside = (e) => {
+        if(this.dropdownRef && !this.dropdownRef.current.contains(e.target)) {
+            this.profileClickCount = 0;
+            document.getElementsByClassName("nav_profile_dropdown")[0].style.display = "none";
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.addEventListener('mousedown', this.handleClickOutside);
     }
 
     render() {
@@ -57,7 +73,7 @@ class Navbar extends Component {
                                 className="nav_profile_img" 
                                 onClick={this.handleProfileImageClick}
                             />
-                            <div className="nav_profile_dropdown f_exo">
+                            <div className="nav_profile_dropdown f_exo" ref={this.dropdownRef}>
                                 <div className="upward_arrow"></div>
                                 <Link className="link" to="/profile">
                                     <div className="nav_dropdown_item">

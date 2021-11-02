@@ -25,7 +25,8 @@ function ComponentHeader(props) {
                 }
             </div>
             <div className="header_search_bar">
-                 <FontAwesomeIcon icon={faSearch} />
+                <input type="text" className="header_search_box f_noto_sans" />
+                <FontAwesomeIcon icon={faSearch} className="header_search_icon pointer" />
             </div>
             <div className="filter_container">
                 <select 

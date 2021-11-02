@@ -30,5 +30,6 @@ footer > span {
 
 .footer_links > a > *:hover {
     transition-duration: 200ms;
+    color: black;
     transform: scale(1.12);
 }
