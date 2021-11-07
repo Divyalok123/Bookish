@@ -11,13 +11,14 @@ class Navbar extends Component {
         super();
         this.dropdownRef = React.createRef();
         this.state = {
-            isLoggedIn: true
+            isLoggedIn: 0
         }
     }
 
     handleProfileImageClick = () => {
+        console.log(this.profileClickCount);
         let ele = document.getElementsByClassName("nav_profile_dropdown")[0];
-        if(this.profileClickCount) {
+        if (this.profileClickCount) {
             ele.style.display = "none";
             this.profileClickCount = 0;
         } else {
@@ -27,7 +28,12 @@ class Navbar extends Component {
     }
 
     handleClickOutside = (e) => {
-        if(this.dropdownRef && !this.dropdownRef.current.contains(e.target)) {
+        if (document.getElementsByClassName("nav_profile_img")[0]
+            && !document.getElementsByClassName("nav_profile_img")[0].contains(e.target)
+            && this.dropdownRef
+            && this.dropdownRef.current
+            && !this.dropdownRef.current.contains(e.target)) 
+        {
             this.profileClickCount = 0;
             document.getElementsByClassName("nav_profile_dropdown")[0].style.display = "none";
         }
@@ -42,42 +48,42 @@ class Navbar extends Component {
     }
 
     render() {
-        return ( 
+        return (
             <div className="navbar">
-                <Link className="navleft" to = "/" >
-                    <img src={ logoImg }  alt="logo" className="navleft_img" /> 
-                </Link> 
+                <Link className="navleft" to="/" >
+                    <img src={logoImg} alt="logo" className="navleft_img" />
+                </Link>
                 <div className="navright">
                     <Link className="link pointer nav_button" to="/about">
-                        <button className="f_lato pointer"> 
+                        <button className="f_lato pointer">
                             About
-                        </button> 
-                    </Link> 
+                        </button>
+                    </Link>
                     <Link className="link pointer nav_button" to="/books">
                         <button className="f_lato pointer">
                             Books
-                        </button> 
-                    </Link> 
-                    
-                    { this.state.isLoggedIn ? (
-                        <>
-                            <Link className="link pointer" to="/registration">
-                                <button className="f_nato_sans opp_nav_button pointer"> 
-                                    Register
-                                </button> 
-                            </Link> 
-                            <Link className="link pointer" to="/registration">
-                                <button className="f_nato_sans opp_nav_button pointer"> 
+                        </button>
+                    </Link>
+
+                    {!this.state.isLoggedIn ? (
+                        <div>
+                            <Link className="link pointer" to="/signup">
+                                <button className="f_nato_sans opp_nav_button pointer">
+                                    Sign Up
+                                </button>
+                            </Link>
+                            <Link className="link pointer" to="/signin">
+                                <button className="f_nato_sans opp_nav_button pointer nav_login_button">
                                     Login
-                                </button> 
-                            </Link> 
-                        </> 
+                                </button>
+                            </Link>
+                        </div>
                     ) : (
                         <div className="nav_profile_container" >
-                            <img 
-                                src={ dummyProfileImg }
+                            <img
+                                src={dummyProfileImg}
                                 alt="nav_profile_img"
-                                className="nav_profile_img" 
+                                className="nav_profile_img"
                                 onClick={this.handleProfileImageClick}
                             />
                             <div className="nav_profile_dropdown f_exo" ref={this.dropdownRef}>
@@ -108,9 +114,9 @@ class Navbar extends Component {
                                     </div>
                                 </Link>
                             </div>
-                        </div> 
+                        </div>
                     )}
-                </div> 
+                </div>
             </div>
         )
     }

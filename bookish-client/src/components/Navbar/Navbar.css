@@ -56,14 +56,25 @@
 }
 
 .opp_nav_button {
-    background-color: rgba(70, 69, 69, 0.952);
+    background-color: rgba(70, 69, 69, 0.877);
     color: white;
-    border-radius: 5px;
+    border-right: 1px solid white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.nav_login_button {
+    background-color: rgba(70, 69, 69, 0.61);
+    border-left: 2px solid white;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .opp_nav_button:hover {
     transition-duration: 150ms;
-    background-color: rgba(26, 24, 24, 0.884);
+    background-color: rgba(29, 28, 28, 0.884);
 }
 
 .nav_profile_container {
