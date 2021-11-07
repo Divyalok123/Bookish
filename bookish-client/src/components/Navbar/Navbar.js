@@ -59,13 +59,20 @@ class Navbar extends Component {
                         </button> 
                     </Link> 
                     
-                    {/* { this.state.isLoggedIn ? ( */}
-                        <Link className="link pointer" to="/registration">
-                            <button className="f_nato_sans opp_nav_button pointer"> 
-                                Register
-                            </button> 
-                        </Link> 
-                    {/* ) : ( */}
+                    { this.state.isLoggedIn ? (
+                        <>
+                            <Link className="link pointer" to="/registration">
+                                <button className="f_nato_sans opp_nav_button pointer"> 
+                                    Register
+                                </button> 
+                            </Link> 
+                            <Link className="link pointer" to="/registration">
+                                <button className="f_nato_sans opp_nav_button pointer"> 
+                                    Login
+                                </button> 
+                            </Link> 
+                        </> 
+                    ) : (
                         <div className="nav_profile_container" >
                             <img 
                                 src={ dummyProfileImg }
@@ -85,6 +92,11 @@ class Navbar extends Component {
                                         My Books
                                     </div>
                                 </Link>
+                                <Link className="link" to="/addbook">
+                                    <div className="nav_dropdown_item">
+                                        Add Book
+                                    </div>
+                                </Link>
                                 <Link className="link" to="/favourites">
                                     <div className="nav_dropdown_item">
                                         Favourites
@@ -97,7 +109,7 @@ class Navbar extends Component {
                                 </Link>
                             </div>
                         </div> 
-                    {/* )} */}
+                    )}
                 </div> 
             </div>
         )

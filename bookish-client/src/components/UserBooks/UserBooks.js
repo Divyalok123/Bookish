@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import BookCard from '../BookCard/BookCard';
 import Footer from '../Footer/Footer';
 import AddBookCard from '../AddBookCard/AddBookCard';
@@ -12,7 +13,13 @@ class UserBooks extends Component {
             <div className="userbooks_container container">
                 <ComponentHeader page={this.props.page} />
                 <div className="userbooks_list">
-                    { this.props.page === "mybooks" ? <AddBookCard /> : ""}
+                    { 
+                        this.props.page === "mybooks" ? 
+                        <Link to="/addbook" className="link">
+                            <AddBookCard /> 
+                        </Link>
+                        : ""
+                    }
                     <BookCard />
                     <BookCard />
                     <BookCard />

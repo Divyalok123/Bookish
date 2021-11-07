@@ -6,6 +6,7 @@ import About from './About/About';
 import UserBooks from './UserBooks/UserBooks';
 import BookCard from './BookCard/BookCard';
 import Profile from './Profile/Profile';
+import AddBook from './AddBook/AddBook';
 
 export { 
     Navbar, 
@@ -15,5 +16,6 @@ export {
     About, 
     UserBooks, 
     Profile,
-    BookCard
+    BookCard,
+    AddBook
 };

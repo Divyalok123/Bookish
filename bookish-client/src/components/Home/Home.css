@@ -96,7 +96,8 @@
     cursor: pointer;
 }
 
-.genre_card > .link, span {
+.genre_card > .link, 
+.genre_card span {
     display: block;
     margin: auto;
     font-size: 24px;

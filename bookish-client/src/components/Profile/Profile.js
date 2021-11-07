@@ -18,12 +18,16 @@ class Profile extends Component {
                             </div>
                         </div>
                         <div className="profile_bio_second">
-                            <p>Likes</p>
-                            <p>Crime, Thriller, Action</p>
+                            <p className="profile_likes">Likes</p>
+                            <p className="profile_likes_list">
+                                <span>Crime</span>
+                                <span>Thriller</span> 
+                                <span>Action</span>
+                            </p>
                         </div>
                         <div className="profile_bio_third">
-                            <p>Other profiles</p>
-                            <ul>
+                            <p className="profile_others">Other profiles</p>
+                            <ul className="profile_link_list">
                                 <li>Linkedin Link</li>
                                 <li>Facebook Link</li>
                                 <li>Instagram Link</li>
