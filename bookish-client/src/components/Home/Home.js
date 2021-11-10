@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import './Home.css';
-
 
 function Home() {
 
