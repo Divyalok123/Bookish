@@ -2,17 +2,35 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username: {
+    firstname: {
         type: String,
-        require: true
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
     },
     password: {
         type: String,
-        require: true
+        required: true
     },
-    profilelink: String,
-    favourites: Array
-
+    email: {
+        type: String,
+        required: true
+    },
+    about: String,
+    favourites: {
+        type: [Schema.Types.ObjectId],
+        default: []
+    },
+    likes: {
+        type: [String],
+        default: []
+    },
+    otherprofiles: {
+        type: [String],
+        default: []
+    }
 }, {
     timestamps: true
 });

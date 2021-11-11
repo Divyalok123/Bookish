@@ -8,17 +8,15 @@ const cors = require('cors');
 //allowing cors
 app.use(cors());
 
-const User = require('./models/user');
-app.get('/', async (req, res) => {
-    res.json({
-        "status": "working"
-    });
-});
+//body-parsing
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
-app.get('/getmessage', (req, res)=>{
-    res.send("working");
-});
 
+
+
+
+app.use('/', require('./routes/index'));
 app.listen(port, (err)=>{
     if(err)
         console.log("Error occured on the server: ", err);
