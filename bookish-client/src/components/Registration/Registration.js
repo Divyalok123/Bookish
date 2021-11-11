@@ -35,17 +35,17 @@ class Registration extends Component {
                             <label for="password" className="placeholder f_titillium">Password</label>
                         </div>
                         { this.props.page === "signin" ? "" :
-                            <div className="input_container">
-                                <input id="confirm" className="input f_yaldevi" type="password" placeholder=" " />
-                                <label for="confirm" className="placeholder f_titillium">Confirm Password</label>
-                            </div>
+                            <>
+                                <div className="input_container">
+                                    <input id="confirm" className="input f_yaldevi" type="password" placeholder=" " />
+                                    <label for="confirm" className="placeholder f_titillium">Confirm Password</label>
+                                </div>
+                            </>
                         }
                         
                         <button type="submit" className="submit pointer f_exo">
                             { this.props.page === "signin" ? "Log In" : "Sign Up"}
                         </button>
-                    </div>
-                    <div id="reg_footer" className="f_gemunu">
                     </div>
                 </div>
             </div>

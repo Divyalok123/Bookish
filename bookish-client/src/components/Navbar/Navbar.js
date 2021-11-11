@@ -54,27 +54,27 @@ class Navbar extends Component {
                     <img src={logoImg} alt="logo" className="navleft_img" />
                 </Link>
                 <div className="navright">
-                    <Link className="link pointer nav_button" to="/about">
-                        <button className="f_lato pointer">
+                    <Link className="link pointer" to="/about">
+                        <button className="f_lato pointer nav_button">
                             About
                         </button>
                     </Link>
-                    <Link className="link pointer nav_button" to="/books">
-                        <button className="f_lato pointer">
+                    <Link className="link pointer" to="/books">
+                        <button className="f_lato pointer nav_button">
                             Books
                         </button>
                     </Link>
 
                     {!this.state.isLoggedIn ? (
                         <div>
-                            <Link className="link pointer" to="/signup">
-                                <button className="f_nato_sans opp_nav_button pointer">
-                                    Sign Up
+                            <Link className="link pointer" to="/signin">
+                                <button className="f_lato pointer opp_nav_button nav_login_button">
+                                    Login
                                 </button>
                             </Link>
-                            <Link className="link pointer" to="/signin">
-                                <button className="f_nato_sans opp_nav_button pointer nav_login_button">
-                                    Login
+                            <Link className="link pointer" to="/signup">
+                                <button className="f_lato pointer opp_nav_button nav_signup_button">
+                                    Sign Up
                                 </button>
                             </Link>
                         </div>

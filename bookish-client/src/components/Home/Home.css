@@ -106,5 +106,36 @@
 .genre_card:hover {
     transition-duration: 100ms;
     background-color: rgb(209, 208, 208);
-    box-shadow: 1px 1px 1px 1px whitesmoke;
+}
+
+.genre_card_thriller:hover {
+    background-color:rgba(139, 0, 0, 0.4);
+}
+
+.genre_card_crime:hover {
+    background-color: rgba(255, 255, 0, 0.4);
+}
+
+.genre_card_romance:hover {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+.genre_card_suspense:hover {
+    background-color: rgba(13, 27, 104, 0.4);
+}
+
+.genre_card_horror:hover {
+    background-color: rgba(15, 12, 12, 0.5);
+}
+
+.genre_card_kids:hover {
+    background-color: rgba(0, 128, 0, 0.4);
+}
+
+.genre_card_action:hover {
+    background-color: rgba(255, 68, 0, 0.5);
+}
+
+.genre_card_comedy:hover {
+    background-color: rgba(255, 166, 0, 0.4);
 }

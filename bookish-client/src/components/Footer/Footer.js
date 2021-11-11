@@ -33,7 +33,7 @@ function Footer() {
                 </a>
                 <a
                     className="link" 
-                    href="http://github.com/divyalok123"
+                    href="https://www.linkedin.com/in/divyalok-j-69a314134/"
                     target="_blank"
                     rel="noreferrer"
                 >

@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown} from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import './Home.css';
@@ -35,7 +34,7 @@ function Home() {
                 </div>
                 <div className="genre_list">
                     <Link 
-                        className="link genre_card" 
+                        className="link genre_card genre_card_thriller" 
                         to={{
                             pathname: '/books',
                             optionSelected: "thriller"
@@ -44,7 +43,7 @@ function Home() {
                         <span>Thriller</span>
                     </Link>
                     <Link 
-                        className="link genre_card" 
+                        className="link genre_card genre_card_crime" 
                         to={{
                             pathname: '/books',
                             optionSelected: "crime"
@@ -53,7 +52,7 @@ function Home() {
                         <span>Crime</span>
                     </Link>
                     <Link 
-                        className="link genre_card" 
+                        className="link genre_card genre_card_romance" 
                         to={{
                             pathname: '/books',
                             optionSelected: "romance"
@@ -62,7 +61,7 @@ function Home() {
                         <span>Romance</span>
                     </Link>
                     <Link 
-                        className="link genre_card" 
+                        className="link genre_card genre_card_suspense" 
                         to={{
                             pathname: '/books',
                             optionSelected: "suspense"
@@ -71,7 +70,7 @@ function Home() {
                         <span>Suspense</span>
                     </Link>
                     <Link 
-                        className="link genre_card" 
+                        className="link genre_card genre_card_horror" 
                         to={{
                             pathname: '/books',
                             optionSelected: "horror"
@@ -80,7 +79,7 @@ function Home() {
                         <span>Horror</span>
                     </Link>
                     <Link 
-                        className="link genre_card" 
+                        className="link genre_card genre_card_kids" 
                         to={{
                             pathname: '/books',
                             optionSelected: "kids"
@@ -89,7 +88,7 @@ function Home() {
                         <span>Kids</span>
                     </Link>
                     <Link 
-                        className="link genre_card" 
+                        className="link genre_card genre_card_comedy" 
                         to={{
                             pathname: '/books',
                             optionSelected: "comedy"
@@ -98,7 +97,7 @@ function Home() {
                         <span>Comedy</span>
                     </Link>
                     <Link 
-                        className="link genre_card" 
+                        className="link genre_card genre_card_action" 
                         to={{
                             pathname: '/books',
                             optionSelected: "action"
