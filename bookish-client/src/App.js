@@ -4,11 +4,12 @@ import {
   Navbar, 
   Home, 
   Books, 
-  Registration, 
   About, 
   Profile, 
   UserBooks,
-  AddBook
+  AddBook,
+  SignUp,
+  Login
 } from './components/index';
 
 function App() {
@@ -18,12 +19,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route path="/books" component={Books}></Route>
-        <Route path="/signup">
-          <Registration page="signup"/>
-        </Route>
-        <Route path="/signin">
-          <Registration page="signin"/>
-        </Route>
+        <Route path="/signup" component={SignUp}></Route>
+        <Route path="/signin" component={Login}></Route>
         <Route path="/about" component={About}></Route>
         <Route path="/mybooks">
           <UserBooks optionSelected="all" page="mybooks" />

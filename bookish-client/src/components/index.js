@@ -7,6 +7,8 @@ import UserBooks from './UserBooks/UserBooks';
 import BookCard from './BookCard/BookCard';
 import Profile from './Profile/Profile';
 import AddBook from './AddBook/AddBook';
+import Login from './Login/Login';
+import SignUp from './SignUp/SignUp';
 
 export { 
     Navbar, 
@@ -17,5 +19,7 @@ export {
     UserBooks, 
     Profile,
     BookCard,
-    AddBook
+    AddBook,
+    Login,
+    SignUp
 };
