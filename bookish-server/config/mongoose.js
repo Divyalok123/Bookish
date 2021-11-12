@@ -12,4 +12,4 @@ db.once('open', () => {
     console.log("Database connection successful");
 })
 
-module.exports = db;
+module.exports = {db, url};

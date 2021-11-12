@@ -2,7 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 2021;
-const db = require('./config/mongoose');
+const {db, url} = require('./config/mongoose');
+const session = require('express-session');
+const mongoStore = require('connect-mongo');
+const passport = require('passport');
+const passportLocal = require('./config/passportLocal');
 const cors = require('cors');
 
 //allowing cors
@@ -12,9 +16,27 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+//create a session and store it in db
+app.use(session({
+    name: 'Bookish-server',
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: false,
+        maxAge: 1000*60*60*48
+    },
+    store: mongoStore.create({
+        mongoUrl: url
+    }, (err) => {
+        console.log("Error in mongoStore (index.js)!");
+        console.log(err);
+    })
+}))
 
-
-
+//to authenticate and change the 'user'
+app.use(passport.initialize());
+app.use(passport.session()); //uses serializeUser and deserializeUser -> express-session is needed for it to work
 
 app.use('/', require('./routes/index'));
 app.listen(port, (err)=>{

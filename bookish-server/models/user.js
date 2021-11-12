@@ -18,7 +18,9 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    avatar: String,
     about: String,
+    title: String,
     favourites: {
         type: [Schema.Types.ObjectId],
         default: []
