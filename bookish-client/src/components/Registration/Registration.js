@@ -32,14 +32,17 @@ function Registration(props) {
                 .post(url, data)
                 .then((response) => {
                     console.log(response.data);
-                    alert("Respo nse" + JSON.stringify(response.data));
-                    history.push({
-                        pathname: "/signin",
-                        state: {
-                            status: "success",
-                            message: "You've signed up! Please signin to continue"    
-                        }
-                    });
+                    if(props.page === "signup") {
+                        history.push({
+                            pathname: "/signin",
+                            state: {
+                                status: "success",
+                                message: "You've signed up! Please signin to continue"    
+                            }
+                        });
+                    } else {
+                        history.push("/");
+                    }
                 })
                 .catch((err) => {
                     console.log(

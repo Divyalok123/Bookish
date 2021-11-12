@@ -67,6 +67,7 @@
 .genre_list_header {
     width: 100%;
     padding: 30px;
+    box-sizing: border-box;
 }
 
 .genre_list_header > p {

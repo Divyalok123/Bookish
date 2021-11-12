@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import BookCard from "../BookCard/BookCard";
 import Footer from "../Footer/Footer";
+import AddNav from "../../hoc/withNav";
 import AddBookCard from "../AddBookCard/AddBookCard";
 import ComponentHeader from "../ComponentHeader/ComponentHeader";
 import "./UserBooks.css";
@@ -41,4 +42,4 @@ class UserBooks extends Component {
     }
 }
 
-export default UserBooks;
+export default AddNav(UserBooks);

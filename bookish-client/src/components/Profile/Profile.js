@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import AddNav from '../../hoc/withNav';
 import dummyPerson from "../../assets/dummyPerson.png";
 import "./Profile.css";
 
@@ -91,4 +92,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default AddNav(Profile);

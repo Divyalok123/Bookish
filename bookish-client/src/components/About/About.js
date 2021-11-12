@@ -1,4 +1,5 @@
 import { Component } from "react";
+import AddNav from "../../hoc/withNav";
 import aboutPageImage from "../../assets/aboutPageImage.jpeg";
 import "./About.css";
 
@@ -68,4 +69,4 @@ class About extends Component {
     }
 }
 
-export default About;
+export default AddNav(About);

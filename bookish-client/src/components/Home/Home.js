@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import AddNav from "../../hoc/withNav";
 import Footer from "../Footer/Footer";
 import "./Home.css";
 
@@ -116,4 +117,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default AddNav(Home);

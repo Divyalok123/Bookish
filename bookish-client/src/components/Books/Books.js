@@ -4,6 +4,7 @@ import BookCard from "../BookCard/BookCard";
 import Footer from "../Footer/Footer";
 import dummyBookImg2 from "../../assets/dummyBookImg2.jpg";
 import "./Books.css";
+import AddNav from "../../hoc/withNav";
 
 class Books extends Component {
     componentDidMount() {
@@ -33,4 +34,4 @@ class Books extends Component {
     }
 }
 
-export default Books;
+export default AddNav(Books);

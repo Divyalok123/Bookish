@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import Footer from "../Footer/Footer";
 import "./AddBook.css";
+import AddNav from "../../hoc/withNav";
 
 function AddBook() {
     useEffect(() => {
@@ -82,4 +83,4 @@ function AddBook() {
     );
 }
 
-export default AddBook;
+export default AddNav(AddBook);

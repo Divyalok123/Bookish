@@ -9,6 +9,7 @@ import Profile from './Profile/Profile';
 import AddBook from './AddBook/AddBook';
 import Login from './Login/Login';
 import SignUp from './SignUp/SignUp';
+import NotFound from './NotFound/NotFound';
 
 export { 
     Navbar, 
@@ -21,5 +22,6 @@ export {
     BookCard,
     AddBook,
     Login,
-    SignUp
+    SignUp,
+    NotFound
 };

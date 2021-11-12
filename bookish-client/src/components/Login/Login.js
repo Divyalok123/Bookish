@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import AddNav from '../../hoc/withNav';
 import Registration from "../Registration/Registration";
 
 function Login(props) {
@@ -20,4 +21,4 @@ function Login(props) {
     )   
 }
 
-export default Login;
+export default AddNav(Login);
