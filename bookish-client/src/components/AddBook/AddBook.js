@@ -1,27 +1,26 @@
-import React, { useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
-import Footer from '../Footer/Footer';
-import './AddBook.css';
+import React, { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
+import Footer from "../Footer/Footer";
+import "./AddBook.css";
 
 function AddBook() {
     useEffect(() => {
-        document.getElementById("book_file_input").addEventListener("change", (e)=> {
-            if(e.target.files && e.target.files[0])   
+        document.title = "AddBook | Bookish";
+        document.getElementById("book_file_input").addEventListener("change", (e) => {
+            if (e.target.files && e.target.files[0])
                 document.getElementById("book_name").innerHTML = e.target.files[0].name;
         });
-    }, [])
+    }, []);
 
     return (
         <div className="addbook_container container">
-            <header>
-                ___ Your book adds value! ___
-            </header>
+            <header>___ Your book adds value! ___</header>
             <div className="addbook_form f_exo">
                 <div className="addbook_file_div flex_cent">
                     <label for="book_file_input">
                         <div id="book_input_label" className="pointer">
-                            <FontAwesomeIcon icon={ faPlusSquare } className="icon" />
+                            <FontAwesomeIcon icon={faPlusSquare} className="icon" />
                             Upload Book
                         </div>
                         <div id="book_name"></div>
@@ -38,7 +37,7 @@ function AddBook() {
                     <label>
                         <div>Book Author</div>
                     </label>
-                    <input type="text" id="book_author_input"/>
+                    <input type="text" id="book_author_input" />
                 </div>
                 <div className="book_genre_div flex_bet">
                     <div>
@@ -80,7 +79,7 @@ function AddBook() {
             </div>
             <Footer />
         </div>
-    )
+    );
 }
 
 export default AddBook;

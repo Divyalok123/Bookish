@@ -1,25 +1,32 @@
-import { Component } from 'react';
-import { Link } from 'react-router-dom';
-import BookCard from '../BookCard/BookCard';
-import Footer from '../Footer/Footer';
-import AddBookCard from '../AddBookCard/AddBookCard';
-import ComponentHeader from '../ComponentHeader/ComponentHeader';
-import './UserBooks.css';
-
+import { Component } from "react";
+import { Link } from "react-router-dom";
+import BookCard from "../BookCard/BookCard";
+import Footer from "../Footer/Footer";
+import AddBookCard from "../AddBookCard/AddBookCard";
+import ComponentHeader from "../ComponentHeader/ComponentHeader";
+import "./UserBooks.css";
 
 class UserBooks extends Component {
+    componentDidMount() {
+        document.title = this.props.page === "mybooks" ? "Your Books | Bookish" : "Favourites | Bookish";
+    }
+
+    componentDidUpdate() {
+        document.title = this.props.page === "mybooks" ? "Your Books | Bookish" : "Favourites | Bookish";
+    }
+
     render() {
         return (
             <div className="userbooks_container container">
                 <ComponentHeader page={this.props.page} />
                 <div className="userbooks_list">
-                    { 
-                        this.props.page === "mybooks" ? 
+                    {this.props.page === "mybooks" ? (
                         <Link to="/addbook" className="link">
-                            <AddBookCard /> 
+                            <AddBookCard />
                         </Link>
-                        : ""
-                    }
+                    ) : (
+                        ""
+                    )}
                     <BookCard />
                     <BookCard />
                     <BookCard />
@@ -30,7 +37,7 @@ class UserBooks extends Component {
                 </div>
                 <Footer />
             </div>
-        )  
+        );
     }
 }
 
