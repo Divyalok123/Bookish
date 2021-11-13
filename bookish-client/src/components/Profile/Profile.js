@@ -3,14 +3,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import AddNav from '../../hoc/withNav';
 import dummyPerson from "../../assets/dummyPerson.png";
+import { AuthContext } from "../../context/AuthContext";
 import "./Profile.css";
+import { Redirect } from "react-router";
 
 class Profile extends Component {
+    static contextType = AuthContext;
+
     componentDidMount() {
         document.title = "Profile | Bookish";
     }
 
-    render() {
+    render() { 
+        if(!this.context.user){
+            console.log("here");
+            return <Redirect to="/" />
+        }
+
+        const {user} = this.context;
+
         return (
             <div className="profile_container container">
                 <div className="profile_content">
@@ -18,8 +29,8 @@ class Profile extends Component {
                         <div className="profile_bio_first">
                             <img src={dummyPerson} alt="dummy person" />
                             <div>
-                                <p>Person Name</p>
-                                <p>Person Title</p>
+                                <p>{user.firstname + " "  + user.lastname}</p>
+                                <p>Reader</p>
                             </div>
                         </div>
                         <div className="profile_bio_second">

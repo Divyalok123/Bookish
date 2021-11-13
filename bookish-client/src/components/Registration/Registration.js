@@ -1,74 +1,91 @@
-import { toast, ToastContainer } from 'react-toastify';
-import { useHistory } from 'react-router'; 
+import { useContext } from "react";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from "../../context/AuthContext";
+import { LoginSuccess } from "../../context/AuthActions";
+import "react-toastify/dist/ReactToastify.css";
 import "./Registration.css";
 
 function Registration(props) {
     const history = useHistory();
+    const { dispatch } = useContext(AuthContext);
 
     async function handleSubmit(e) {
         e.preventDefault();
-    
+
         let firstname = e.target.firstname && e.target.firstname.value;
         let lastname = e.target.lastname && e.target.lastname.value;
         let email = e.target.email.value;
         let password = e.target.password.value;
         let confirm = e.target.confirm && e.target.confirm.value;
-    
-        let data = {firstname, lastname, email, password, confirm};
-        
-        if(props.page !== "signin" && password !== confirm) {
-            toast.error("Passwords don't match!", {
-                position: toast.POSITION.BOTTOM_RIGHT,
-            });
+
+        let data = { firstname, lastname, email, password, confirm };
+
+        if (props.page !== "signin" && password !== confirm) {
+            toast.error("Passwords don't match!");
             toast.clearWaitingQueue();
             return;
         }
-    
+
         let url = props.page === "signin" ? "/signin" : "/signup";
         try {
             axios
                 .post(url, data)
                 .then((response) => {
-                    console.log(response.data);
-                    if(props.page === "signup") {
+                    console.log("Data from registration.js: ", response.data);
+                    const { status, message } = response.data;
+                    if (status === "error") {
+                        toast.error(message);
+                        return;
+                    }
+
+                    if (props.page === "signup") {
                         history.push({
                             pathname: "/signin",
                             state: {
-                                status: "success",
-                                message: "You've signed up! Please signin to continue"    
-                            }
+                                status,
+                                message,
+                            },
                         });
                     } else {
-                        history.push("/");
+                        const { user } = response.data;
+                        dispatch(LoginSuccess(user));
+                        history.push({
+                            pathname: "/",
+                            state: {
+                                status,
+                                message,
+                            },
+                        });
                     }
                 })
                 .catch((err) => {
-                    console.log(
-                        "Error in axios post request from Registration Component"
-                    );
-                    console.log(err);
+                    console.log("Error in axios post request from Registration Component");
+                    throw err;
                 });
         } catch (err) {
             console.log("Error in axios call from Registration Component!");
-            console.log(err);
+            throw err;
         }
     }
+
+    const bottomButtonStyles = { 
+        border: "1px solid black", 
+        marginLeft: "5px", 
+        padding: "2px 4px" 
+    };
 
     return (
         <div className="login_container container">
             <div id="reg_box">
                 <form id="reg_form" onSubmit={handleSubmit}>
                     <div className="title f_exo">
-                        {props.page === "signin"
-                            ? "Have fun!"
-                            : "Create your account"}
+                        {props.page === "signin" ? "Have fun!" : "Create your account"}
                     </div>
                     <div className="subtitle f_exo">
-                        <p>
-                            “Sleep is good, he said, and books are better.”
-                        </p>
+                        <p>“Sleep is good, he said, and books are better.”</p>
                         <p>― George R. R. Martin</p>
                     </div>
                     {props.page === "signin" ? (
@@ -84,10 +101,7 @@ function Registration(props) {
                                     placeholder=" "
                                     required
                                 />
-                                <label
-                                    for="firstname"
-                                    className="placeholder f_titillium"
-                                >
+                                <label htmlFor="firstname" className="placeholder f_titillium">
                                     First name
                                 </label>
                             </div>
@@ -100,10 +114,7 @@ function Registration(props) {
                                     placeholder=" "
                                     required
                                 />
-                                <label
-                                    for="lastname"
-                                    className="placeholder f_titillium"
-                                >
+                                <label htmlFor="lastname" className="placeholder f_titillium">
                                     Last name
                                 </label>
                             </div>
@@ -118,10 +129,7 @@ function Registration(props) {
                             placeholder=" "
                             required
                         />
-                        <label
-                            for="email"
-                            className="placeholder f_titillium"
-                        >
+                        <label htmlFor="email" className="placeholder f_titillium">
                             Email
                         </label>
                     </div>
@@ -135,10 +143,7 @@ function Registration(props) {
                             minLength="4"
                             required
                         />
-                        <label
-                            for="password"
-                            className="placeholder f_titillium"
-                        >
+                        <label htmlFor="password" className="placeholder f_titillium">
                             Password
                         </label>
                     </div>
@@ -155,10 +160,7 @@ function Registration(props) {
                                     placeholder=" "
                                     required
                                 />
-                                <label
-                                    for="confirm"
-                                    className="placeholder f_titillium"
-                                >
+                                <label htmlFor="confirm" className="placeholder f_titillium">
                                     Confirm Password
                                 </label>
                             </div>
@@ -166,23 +168,30 @@ function Registration(props) {
                     )}
 
                     <button type="submit" className="submit pointer f_exo">
-                        {props.page === "signin"
-                            ? "Log In"
-                            : "Sign Up"}
+                        {props.page === "signin" ? "Log In" : "Sign Up"}
                     </button>
                 </form>
+                <br />
+                <div>
+                    <span>
+                        {props.page === "signin" ? "Don't have an account?" : "Already have an account?"}
+                    </span>
+                    &nbsp;
+                    <span>
+                        {props.page === "signin" ? (
+                            <Link to="/signup" className="link" style={bottomButtonStyles}>
+                                Sign Up
+                            </Link>
+                        ) : (
+                            <Link to="/signin" className="link" style={bottomButtonStyles}>
+                                Log In
+                            </Link>
+                        )}
+                    </span>
+                </div>
             </div>
-            <ToastContainer 
-                limit={5} 
-                autoClose={4000}
-                draggable
-                pauseOnHover
-                closeOnClick
-                theme="dark"
-            />
         </div>
     );
 }
 
 export default Registration;
-

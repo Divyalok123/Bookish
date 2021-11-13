@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../../assets/full_logo.png";
 import dummyProfileImg from "../../assets/dummyPerson.png";
+import { AuthContext } from "../../context/AuthContext";
+import { LogOut } from "../../context/AuthActions";
 import "./Navbar.css";
+import { toast } from "react-toastify";
 
 class Navbar extends Component {
     profileClickCount = 0;
+    static contextType = AuthContext;
 
     constructor() {
         super();
@@ -15,8 +19,25 @@ class Navbar extends Component {
         };
     }
 
+    componentDidMount() {
+        if(!this.state.isLoggedIn && this.context.user) {
+            this.setState({
+                isLoggedIn: 1
+            })
+        }
+        document.addEventListener("mousedown", this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        if(this.state.isLoggedIn && !this.context.user) {
+            this.setState({
+                isLoggedIn: 0
+            })
+        }
+        document.addEventListener("mousedown", this.handleClickOutside);
+    }
+
     handleProfileImageClick = () => {
-        console.log(this.profileClickCount);
         let ele = document.getElementsByClassName("nav_profile_dropdown")[0];
         if (this.profileClickCount) {
             ele.style.display = "none";
@@ -25,7 +46,7 @@ class Navbar extends Component {
             ele.style.display = "block";
             this.profileClickCount = 1;
         }
-    };
+    }
 
     handleClickOutside = (e) => {
         if (
@@ -38,14 +59,15 @@ class Navbar extends Component {
             this.profileClickCount = 0;
             document.getElementsByClassName("nav_profile_dropdown")[0].style.display = "none";
         }
-    };
-
-    componentDidMount() {
-        document.addEventListener("mousedown", this.handleClickOutside);
     }
 
-    componentWillUnmount() {
-        document.addEventListener("mousedown", this.handleClickOutside);
+    handleLogout = (e) => {
+        this.context.dispatch(LogOut());
+        toast.success("Logged out successfully!");
+        localStorage.clear();
+        this.setState({
+            isLoggedIn: 0
+        })
     }
 
     render() {
@@ -97,9 +119,7 @@ class Navbar extends Component {
                                 <Link className="link" to="/favourites">
                                     <div className="nav_dropdown_item">Favourites</div>
                                 </Link>
-                                <Link className="link" to="/logout">
-                                    <div className="nav_dropdown_item">Logout</div>
-                                </Link>
+                                <div className="nav_dropdown_item" onClick={this.handleLogout}>Logout</div>
                             </div>
                         </div>
                     )}

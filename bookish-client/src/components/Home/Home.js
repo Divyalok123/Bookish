@@ -2,14 +2,23 @@ import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import AddNav from "../../hoc/withNav";
 import Footer from "../Footer/Footer";
 import "./Home.css";
 
-function Home() {
+function Home(props) {
     useEffect(() => {
         document.title = "Bookish";
-    }, []);
+
+        if(props.location.state) {
+            const {status, message} = props.location.state;
+            if(status === "success")
+                toast.success(message);
+            else
+                toast.error(message);
+        }
+    }, [props]);
 
     var moveToNext = () => {
         let ele = document.getElementsByClassName("genre_list_container")[0];

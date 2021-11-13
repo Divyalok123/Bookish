@@ -1,21 +1,18 @@
-const LoginStart = (credential) => {
-    return {
-        type: "LOGIN_START"
-    }
-}
+const LoginStart = (credential) => ({
+    type: "LOGIN_START"
+})
 
-const LoginSuccess = (user) => {
-    return {
-        type: "LOGIN_SUCCESS",
-        data: user
-    }
-}
+const LoginSuccess = (user) => ({
+    type: "LOGIN_SUCCESS",
+    data: user
+})
 
-const LoginError = (error) => {
-    return {
-        type: "LOGIN_ERROR",
-        error: error
-    }
-}
+const LoginError = (error) => ({
+    type: "LOGIN_ERROR"
+})
 
-export {LoginSuccess, LoginError, LoginStart};
+const LogOut = () => ({
+    type: "LOGOUT"
+})
+
+export {LoginSuccess, LoginError, LoginStart, LogOut};

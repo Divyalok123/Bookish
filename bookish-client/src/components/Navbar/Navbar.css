@@ -69,6 +69,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    margin: 0 20px;
 }
 
 .nav_profile_img {
@@ -111,7 +112,7 @@
     background-color: rgb(197, 197, 197);
 }
 
-.nav_profile_dropdown > .link:last-child > .nav_dropdown_item {
+.nav_profile_dropdown > .nav_dropdown_item:last-child {
     background-color: rgb(128, 128, 128);
     color: white
 }
