@@ -34,7 +34,9 @@ function ProfileUpdate() {
 
         let checkvals = [];
         Array.from(e.target.genre).forEach((gen) => {
-            if (gen.checked) checkvals.push(gen.value);
+            if (gen.checked) {
+                checkvals.push(gen.value);
+            }
         });
 
         const formData = new FormData();
@@ -63,7 +65,7 @@ function ProfileUpdate() {
             await axios
                 .post(url, formData, {
                     headers: {
-                        "Content-Type": "multipart/form-data",
+                        "Content-Type": "multipart/form-data"
                     },
                 })
                 .then((res) => {
