@@ -25,7 +25,7 @@ function SignUp(props) {
             else
                 toast.error(message);
         }   
-    }, [props])
+    }, [props, user, history])
 
     return (
         <Registration page="signup" />

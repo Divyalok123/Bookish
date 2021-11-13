@@ -10,6 +10,7 @@ import AddBook from './AddBook/AddBook';
 import Login from './Login/Login';
 import SignUp from './SignUp/SignUp';
 import NotFound from './NotFound/NotFound';
+import ProfileUpdate from './ProfileUpdate/ProfileUpdate';
 
 export { 
     Navbar, 
@@ -23,5 +24,6 @@ export {
     AddBook,
     Login,
     SignUp,
-    NotFound
+    NotFound,
+    ProfileUpdate
 };

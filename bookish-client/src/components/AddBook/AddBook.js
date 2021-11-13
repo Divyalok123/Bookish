@@ -8,7 +8,7 @@ import AddNav from "../../hoc/withNav";
 import "./AddBook.css";
 
 function AddBook() {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const history = useHistory();
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function AddBook() {
 
         console.log(user);
 
-        if(!user) {
+        if (!user) {
             history.push("/");
             return;
         }
@@ -27,70 +27,96 @@ function AddBook() {
         });
     }, [history, user]);
 
+    const handleAddClick = (e) => {};
+
     return (
         <div className="addbook_container container">
             <header>___ Your book adds value! ___</header>
-            <div className="addbook_form f_exo">
+            <form
+                className="add_update_form addbook_form f_exo"
+                encType="multipart/form-data"
+                onSubmit={handleAddClick}
+            >
                 <div className="addbook_file_div flex_cent">
                     <label htmlFor="book_file_input">
-                        <div id="book_input_label" className="pointer">
+                        <div id="book_input_label" className="input_label pointer">
                             <FontAwesomeIcon icon={faPlusSquare} className="icon" />
                             Upload Book
                         </div>
-                        <div id="book_name"></div>
+                        <div class="input_file_name" id="book_name"></div>
                     </label>
-                    <input type="file" id="book_file_input" />
+                    <input
+                        type="file"
+                        id="book_file_input"
+                        className="add_update_file_input"
+                        name="book_file_input"
+                    />
                 </div>
-                <div className="book_name_div flex_bet">
+                <div className="flex_bet">
                     <label>
                         <div>Book Name</div>
                     </label>
-                    <input type="text" id="book_name_input" className="f_lato" />
+                    <input
+                        type="text"
+                        id="book_name_input"
+                        className="text_input f_lato"
+                        name="book_name_input"
+                    />
                 </div>
-                <div className="book_author_div flex_bet">
+                <div className="flex_bet">
                     <label>
                         <div>Book Author</div>
                     </label>
-                    <input type="text" id="book_author_input" />
+                    <input
+                        type="text"
+                        id="book_author_input"
+                        className="text_input f_lato"
+                        name="book_author_input"
+                    />
                 </div>
-                <div className="book_genre_div flex_bet">
-                    <div>
-                        <input type="checkbox" id="checkbox_thriller" />
-                        <label htmlFor="checkbox_thriller">Thriller</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="checkbox_comedy" />
-                        <label htmlFor="checkbox_comedy">Comedy</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="checkbox_kids" />
-                        <label htmlFor="checkbox_kids">Kids</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="checkbox_romance" />
-                        <label htmlFor="checkbox_romance">Romance</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="checkbox_suspense" />
-                        <label htmlFor="checkbox_suspense">Suspense</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="checkbox_horror" />
-                        <label htmlFor="checkbox_horror">Horror</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="checkbox_crime" />
-                        <label htmlFor="checkbox_crime">Crime</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="checkbox_action" />
-                        <label htmlFor="checkbox_action">Action</label>
+                <div className="flex_bet">
+                    <label>Choose genres</label>
+                    <div className="genre_div">
+                        <div>
+                            <input type="checkbox" id="checkbox_thriller" name="genre" />
+                            <label htmlFor="checkbox_thriller">Thriller</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox_comedy" name="genre" />
+                            <label htmlFor="checkbox_comedy">Comedy</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox_kids" name="genre" />
+                            <label htmlFor="checkbox_kids">Kids</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox_romance" name="genre" />
+                            <label htmlFor="checkbox_romance">Romance</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox_suspense" name="genre" />
+                            <label htmlFor="checkbox_suspense">Suspense</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox_horror" name="genre" />
+                            <label htmlFor="checkbox_horror">Horror</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox_crime" name="genre" />
+                            <label htmlFor="checkbox_crime">Crime</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="checkbox_action" name="genre" />
+                            <label htmlFor="checkbox_action">Action</label>
+                        </div>
                     </div>
                 </div>
-                <div className="addbook_submit flex_cent">
-                    <button className="f_exo">Add Book</button>
+                <div className="form_submit flex_cent">
+                    <button className="f_exo" type="submit">
+                        Add Book
+                    </button>
                 </div>
-            </div>
+            </form>
             <Footer />
         </div>
     );

@@ -119,6 +119,9 @@ class Navbar extends Component {
                                 <Link className="link" to="/favourites">
                                     <div className="nav_dropdown_item">Favourites</div>
                                 </Link>
+                                <Link className="link" to="/updateprofile">
+                                    <div className="nav_dropdown_item">Update Profile</div>
+                                </Link>
                                 <div className="nav_dropdown_item" onClick={this.handleLogout}>Logout</div>
                             </div>
                         </div>

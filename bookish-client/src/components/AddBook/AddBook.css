@@ -1,29 +1,40 @@
-.addbook_container > header {
-  text-align: center;
-  font-size: 30px;
-  padding: 30px 0;
-}
-
-.addbook_form {
-  width: 35%;
-  margin: auto;
+.addbook_container,
+.profileupdate_container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 18px;
+  justify-content: space-between;
+}
+
+.addbook_container > header,
+.profileupdate_container > header {
+    text-align: center;
+    font-size: 30px;
+    padding: 30px 0;
+}
+
+.add_update_form {
+    width: 35%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    flex-grow: 1;
 }
 
 .flex_cent,
 .flex_bet {
-  margin: 30px 0;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+    margin: 30px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .flex_bet {
-  justify-content: space-between;
+    justify-content: space-between;
 }
+
 
 .flex_bet > label {
     display: flex;
@@ -31,15 +42,14 @@
     align-items: center;
 }
 
-.flex_bet > input {
+.flex_bet > .text_input {
     width: 400px;
     outline: none;
     background-color: rgba(235, 231, 231, 0.712);
     flex-shrink: 1;
 }
 
-#book_name_input,
-#book_author_input {
+.text_input {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -47,75 +57,76 @@
     font-size: 18px;
     border-radius: 5px;
     border: 1px solid black;
+    resize: none;
 }
 
 .flex_cent {
-  justify-content: center;
+    justify-content: center;
 }
 
-#book_file_input {
-  display: none;
+.add_update_file_input {
+    display: none;
 }
 
-#book_input_label {
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  font-size: 18px;
-  text-align: center;
+.input_label {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
 }
 
-#book_input_label > .icon {
-  font-size: 40px;
-  display: block;
-  margin: 10px auto;
+.input_label > .icon {
+    font-size: 40px;
+    display: block;
+    margin: 10px auto;
 }
 
-#book_name {
-  padding: 10px 0;
-  font-size: 18px;
-  text-align: center;
-  color: grey;
+.input_file_name {
+    padding: 10px 0;
+    font-size: 18px;
+    text-align: center;
+    color: grey;
 }
 
-.book_genre_div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
+.genre_div,
+.title_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-input[type="checkbox"] {
-  cursor: pointer;
-  width: 15px;
-  height: 15px; 
+input[type="checkbox"],
+input[type="radio"] {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
 }
 
-.book_genre_div > * {
-  display: inline-block;
-  padding: 13px;
+.genre_div > div,
+.title_div > div {
+    display: inline-block;
+    padding: 13px;
 }
 
-.book_genre_div label {
-  margin-left: 5px;
+.genre_div label,
+.title_div label {
+    margin-left: 7px;
 }
 
-.addbook_submit > button {
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  border: 1px solid black;
-  background-color: ghostwhite;
+.form_submit > button {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid black;
+    background-color: ghostwhite;
 }
 
-.addbook_submit > button:active {
-  transition-duration: 50ms;
-  box-shadow: 1px 1px 1px 0px grey;
+.form_submit > button:active {
+    transition-duration: 50ms;
+    box-shadow: 1px 1px 2px 0px grey;
 }
 
-.addbook_container > footer {
-    position: absolute;
-    bottom: 0;
-}

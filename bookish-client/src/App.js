@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Home, Books, About, Profile, UserBooks, AddBook, SignUp, Login, NotFound } from './components/index';
+import { Home, Books, About, Profile, UserBooks, AddBook, SignUp, Login, NotFound, ProfileUpdate } from './components/index';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
@@ -21,6 +21,7 @@ function App() {
                         <UserBooks optionSelected="all" page="favourites" />
                     </Route>
                     <Route path="/addbook" component={AddBook}></Route>
+                    <Route path="/updateprofile" component={ProfileUpdate}></Route>
                     <Route exact path="/" component={Home}></Route>
                     <Route path="/404" component={NotFound} />
                     <Redirect to="/404" />
