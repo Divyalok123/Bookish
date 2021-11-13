@@ -44,8 +44,14 @@ const userSchema = new Schema({
     },
     otherprofiles: {
         type: Object,
-        default: []
-    }
+        default: {}
+    },
+    mybooks: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Book'
+        }
+    ]
 }, {
     timestamps: true
 });

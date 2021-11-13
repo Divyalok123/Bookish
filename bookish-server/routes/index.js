@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {createUser, login} = require('../controllers/registrationController');
 const { addBook, getAll, markFavourite, markNotFavourite } = require('../controllers/bookController');
-const { updateProfile} = require('../controllers/userController');
+const { updateProfile, getUserBooks} = require('../controllers/userController');
 
 //registration routes
 router.get('/', (req, res) => {
@@ -28,5 +28,8 @@ router.post('/favourite', markFavourite);
 
 //mark book as not favourite
 router.post('/unfavourite', markNotFavourite);
+
+//get books of a user
+router.get('/getuserbooks', getUserBooks)
 
 module.exports = router;
