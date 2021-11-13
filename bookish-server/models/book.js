@@ -6,7 +6,7 @@ const bookSchema = new Schema({
         type: String,
         required: true
     },
-    pdf: {
+    pdflink: {
         type: String,
         required: true
     },
@@ -19,4 +19,5 @@ const bookSchema = new Schema({
     timestamps: true
 }); 
 
-module.export = Book
+const Book = mongoose.model('Book', bookSchema);
+module.exports = Book

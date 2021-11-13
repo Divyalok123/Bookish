@@ -64,7 +64,7 @@ module.exports.createUser = (req, res) => {
 
             data.password = hash;
 
-            User.create(data, (err) => {
+            User.create({...data}, (err) => {
                 if(err) {
                     console.log("Error while creating user, registrationController.js!");
                     console.log(err);

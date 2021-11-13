@@ -8,9 +8,12 @@ const mongoStore = require('connect-mongo');
 const passport = require('passport');
 const passportLocal = require('./config/passportLocal');
 const cors = require('cors');
+const path = require('path');
 
 //allowing cors
 app.use(cors());
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 //body-parsing
 app.use(express.json());
@@ -24,7 +27,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         secure: false,
-        maxAge: 1000*60*60*48
+        maxAge: 1000*60*60*48,
+        sameSite: 'none'
     },
     store: mongoStore.create({
         mongoUrl: url
