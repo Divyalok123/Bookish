@@ -25,7 +25,7 @@
   width: 105px;
   height: 105px;
   border-radius: 10px;
-  object-fit: contain;
+  object-fit: cover;
   box-shadow: 0 1px 1px 1px grey;
 }
 

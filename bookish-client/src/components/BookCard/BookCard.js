@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import dummyBookImg from "../../assets/dummyBookImg.jpg";
@@ -7,8 +8,12 @@ import "./BookCard.css";
 function BookCard({ imgsrc, name, author, genre }) {
     let starClickCount = 1;
 
+    useEffect(() => {
+        
+    }, []); 
+
     let changeStar = (e) => {
-        if (starClickCount) {
+        if (!starClickCount) {
             e.target.style.color = "rgb(245, 212, 29)";
             starClickCount--;
         } else {

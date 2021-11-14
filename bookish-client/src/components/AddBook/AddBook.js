@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
-import axios from 'axios';
+import axios from "axios";
 import Footer from "../Footer/Footer";
 import AddNav from "../../hoc/withNav";
 import "./AddBook.css";
@@ -25,12 +25,18 @@ function AddBook() {
             if (e.target.files && e.target.files[0])
                 document.getElementById("book_name").innerHTML = e.target.files[0].name;
         });
+
+        document.getElementById("book_image_input").addEventListener("change", (e) => {
+            if (e.target.files && e.target.files[0])
+                document.getElementById("img_name").innerHTML = e.target.files[0].name;
+        });
+
     }, [history, user]);
 
     const handleAddClick = (e) => {
         e.preventDefault();
 
-        if(!document.getElementById('book_file_input').files.length) {
+        if (!document.getElementById("book_file_input").files.length) {
             toast.error("No file included!");
             return;
         }
@@ -43,33 +49,34 @@ function AddBook() {
         });
 
         const formData = new FormData();
-        formData.append('book_file_input', e.target.book_file_input.files[0]);
-        formData.append('book_name_input', e.target.book_name_input.value);
-        formData.append('book_author_input', e.target.book_author_input.value);
-        
-        if(checkvals.length)
-            formData.append('genre', checkvals);
+        formData.append("book_image_input", e.target.book_image_input.files[0]);
+        formData.append("book_file_input", e.target.book_file_input.files[0]);
+        formData.append("book_name_input", e.target.book_name_input.value);
+        formData.append("book_author_input", e.target.book_author_input.value);
 
-        const url = '/addbook';
+        if (checkvals.length) formData.append("genre", checkvals);
+
+        const url = "/addbook";
         try {
-            axios.post(url, formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            })
-                .then(res => {
-                    if(res.data.status === "success") {
+            axios
+                .post(url, formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
+                .then((res) => {
+                    if (res.data.status === "success") {
                         toast.success(res.data.message);
                     } else {
                         toast.error(res.data.message);
                     }
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log("Error in axios post request!");
                     console.log(err);
-                })
-        } catch(err) {
-            console.log('Error in axios request in AddBook.js');
+                });
+        } catch (err) {
+            console.log("Error in axios request in AddBook.js");
             console.log(err);
         }
     };
@@ -82,21 +89,38 @@ function AddBook() {
                 encType="multipart/form-data"
                 onSubmit={handleAddClick}
             >
-                <div className="addbook_file_div flex_cent">
-                    <label htmlFor="book_file_input">
-                        <div id="book_input_label" className="input_label pointer">
-                            <FontAwesomeIcon icon={faPlusSquare} className="icon" />
-                            Upload Book
-                        </div>
-                        <div className="input_file_name" id="book_name"></div>
-                    </label>
-                    <input
-                        type="file"
-                        id="book_file_input"
-                        className="add_update_file_input"
-                        name="book_file_input"
-                        required
-                    />
+                <div className="flex_bet">
+                    <div className="flex_cent">
+                        <label htmlFor="book_file_input">
+                            <div className="input_label pointer">
+                                <FontAwesomeIcon icon={faPlusSquare} className="icon" />
+                                Upload Book
+                            </div>
+                            <div className="input_file_name" id="book_name"></div>
+                        </label>
+                        <input
+                            type="file"
+                            id="book_file_input"
+                            className="add_update_file_input"
+                            name="book_file_input"
+                            required
+                        />
+                    </div>
+                    <div className="flex_cent">
+                        <label htmlFor="book_image_input">
+                            <div className="input_label pointer">
+                                <FontAwesomeIcon icon={faPlusSquare} className="icon" />
+                                Upload Book Img
+                            </div>
+                            <div className="input_file_name" id="img_name"></div>
+                        </label>
+                        <input
+                            type="file"
+                            id="book_image_input"
+                            className="add_update_file_input"
+                            name="book_image_input"
+                        />
+                    </div>
                 </div>
                 <div className="flex_bet">
                     <label>
@@ -130,7 +154,7 @@ function AddBook() {
                             <label htmlFor="checkbox_thriller">Thriller</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="checkbox_comedy" name="genre" value="comedy"/>
+                            <input type="checkbox" id="checkbox_comedy" name="genre" value="comedy" />
                             <label htmlFor="checkbox_comedy">Comedy</label>
                         </div>
                         <div>
@@ -150,11 +174,11 @@ function AddBook() {
                             <label htmlFor="checkbox_horror">Horror</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="checkbox_crime" name="genre" value="crime"/>
+                            <input type="checkbox" id="checkbox_crime" name="genre" value="crime" />
                             <label htmlFor="checkbox_crime">Crime</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="checkbox_action" name="genre" value="action"/>
+                            <input type="checkbox" id="checkbox_action" name="genre" value="action" />
                             <label htmlFor="checkbox_action">Action</label>
                         </div>
                     </div>

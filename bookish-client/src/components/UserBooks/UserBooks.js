@@ -34,6 +34,9 @@ class UserBooks extends Component {
                     ) : (
                         ""
                     )}
+                    {
+                        this.props.page === "mybooks" ? (<div></div>) : (<div></div>)
+                    }
                     <BookCard />
                     <BookCard />
                     <BookCard />

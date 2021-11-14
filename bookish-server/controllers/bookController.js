@@ -7,7 +7,7 @@ module.exports.addBook = async (req, res) => {
 
     Book.multerUpload(req, res, (err) => {
         if (err) {
-            console.log(err);
+            console.log("Error: ", err);
             res.json({
                 status: "error",
                 message: "Error occured while uploading file!",
@@ -15,8 +15,15 @@ module.exports.addBook = async (req, res) => {
             return;
         }
 
+        if(req.files.book_image_input){
+            newBook.pdflink = Book.bookPath + "/" + toString(req.files.book_image_input.filename).split(" ").join("-");
+        }
+
+        if(req.files.book_file_input){
+            newBook.bookimg = Book.thumbPath + "/" + toString(req.files.book_file_input.filename).split(" ").join("-");
+        }
+
         if (req.file) {
-            newBook.pdflink = Book.bookPath + "/" + req.file.filename.split(" ").join("-");
         }
 
         let data = req.body;

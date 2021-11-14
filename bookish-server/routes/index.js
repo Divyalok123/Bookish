@@ -32,4 +32,7 @@ router.post('/unfavourite', markNotFavourite);
 //get books of a user
 router.get('/getuserbooks', getUserBooks)
 
+//get books marked favourite
+router.get('/getfavourites', getUserBooks)
+
 module.exports = router;
