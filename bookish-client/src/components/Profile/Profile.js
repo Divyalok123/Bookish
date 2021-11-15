@@ -34,6 +34,7 @@ class Profile extends Component {
                 <div className="profile_content">
                     <div className="profile_left f_yaldevi">
                         <div className="profile_bio_first">
+                            {console.log(PF + avatar)}
                             <img src={avatar ? PF + avatar : dummyPerson} alt="personimage" />
                             <div>
                                 <p>{firstname + " " + lastname}</p>

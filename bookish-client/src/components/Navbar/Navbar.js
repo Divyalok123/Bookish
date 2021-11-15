@@ -71,6 +71,8 @@ class Navbar extends Component {
     }
 
     render() {
+        const PF = process.env.REACT_APP_PROXY_URL;
+        const  { user } = this.context;
         return (
             <div className="navbar">
                 <Link className="navleft" to="/">
@@ -100,7 +102,7 @@ class Navbar extends Component {
                     ) : (
                         <div className="nav_profile_container">
                             <img
-                                src={dummyProfileImg}
+                                src={user.avatar ? PF + user.avatar : dummyProfileImg}
                                 alt="nav_profile_img"
                                 className="nav_profile_img"
                                 onClick={this.handleProfileImageClick}

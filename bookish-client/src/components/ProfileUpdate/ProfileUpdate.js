@@ -20,6 +20,7 @@ function ProfileUpdate() {
             return;
         }
 
+
         document.title = "Update Profile | Bookish";
 
         document.getElementById("profile_img_input").addEventListener("change", (e) => {
@@ -59,11 +60,13 @@ function ProfileUpdate() {
             formData.append('instagram', e.target.instagram.value);
         if (e.target.facebook) 
             formData.append('facebook', e.target.facebook.value);
+        formData.append('userid', user._id);
 
         const url = "/updateprofile";
         try {
             await axios
                 .post(url, formData, {
+                    withCredentials: true,
                     headers: {
                         "Content-Type": "multipart/form-data"
                     },
@@ -77,7 +80,7 @@ function ProfileUpdate() {
                     }
                 })
                 .catch((err) => {
-                    console.log(err);
+                    console.log("Error: ", err);
                 });
         } catch (err) {
             console.log("Error occured in axios request!");

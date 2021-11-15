@@ -34,7 +34,7 @@ function Registration(props) {
             axios
                 .post(url, data)
                 .then((response) => {
-                    console.log("Data from registration.js: ", response.data);
+                    // console.log("Data from registration.js: ", response.data);
                     const { status, message } = response.data;
                     if (status === "error") {
                         toast.error(message);

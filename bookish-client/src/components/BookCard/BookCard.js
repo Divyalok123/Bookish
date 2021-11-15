@@ -1,18 +1,14 @@
-import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import dummyBookImg from "../../assets/dummyBookImg.jpg";
 import resume from "../../assets/resume.pdf";
 import "./BookCard.css";
 
-function BookCard({ imgsrc, name, author, genre }) {
-    let starClickCount = 1;
-
-    useEffect(() => {
-        
-    }, []); 
+function BookCard({ imgsrc, pdflink, name, author, genre }) {
+    let starClickCount = 0;
 
     let changeStar = (e) => {
+        console.log("starClickCount: ", starClickCount);
         if (!starClickCount) {
             e.target.style.color = "rgb(245, 212, 29)";
             starClickCount--;
@@ -25,8 +21,8 @@ function BookCard({ imgsrc, name, author, genre }) {
     return (
         <div className="book_card card">
             <div className="book_img pointer">
-                <a target="_blank" href={resume} rel="noreferrer">
-                    <img src={imgsrc || dummyBookImg} alt="Dummy book img" />
+                <a target="_blank" href={pdflink || resume} rel="noreferrer">
+                    <img src={imgsrc || dummyBookImg} alt={imgsrc} />
                 </a>
             </div>
             <div className="book_details">

@@ -7,6 +7,7 @@ import AddNav from "../../hoc/withNav";
 import Footer from "../Footer/Footer";
 import "./Home.css";
 
+
 function Home(props) {
     useEffect(() => {
         document.title = "Bookish";

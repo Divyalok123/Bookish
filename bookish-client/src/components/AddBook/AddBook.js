@@ -53,6 +53,7 @@ function AddBook() {
         formData.append("book_file_input", e.target.book_file_input.files[0]);
         formData.append("book_name_input", e.target.book_name_input.value);
         formData.append("book_author_input", e.target.book_author_input.value);
+        formData.append("userid", user._id);
 
         if (checkvals.length) formData.append("genre", checkvals);
 
@@ -60,6 +61,7 @@ function AddBook() {
         try {
             axios
                 .post(url, formData, {
+                    withCredentials: true,
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
@@ -126,7 +128,7 @@ function AddBook() {
                     <label>
                         <div>Book Name</div>
                     </label>
-                    <input
+                    <input  
                         type="text"
                         id="book_name_input"
                         className="text_input f_lato"
