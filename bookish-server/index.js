@@ -18,9 +18,7 @@ app.use(
     })
 );
 
-app.use("/public/avatars", express.static(path.join(__dirname, "/public/avatars")));
-app.use("/public/books", express.static(path.join(__dirname, "/public/books")));
-app.use("/public/thumbs", express.static(path.join(__dirname, "/public/thumbs")));
+app.use("/public", express.static(path.join(__dirname, "/public")));
 
 //body-parsing
 app.use(express.json());
