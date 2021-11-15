@@ -4,43 +4,40 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-module.exports.getUserBooks = async(req, res) => {
+module.exports.getUserBooks = async (req, res) => {
     try {
-        const userId = req.user.id;
+        const userId = req.body.userid;
         const user = await User.findById(userId);
         const userBooks = [];
-        await user.mybooks.forEach(async(bookid) => {
+        await user.mybooks.forEach(async (bookid) => {
             try {
                 const book = await Book.findById(bookid);
                 userBooks.push(book);
-            } catch(err) {
+            } catch (err) {
                 res.json({
                     status: "error",
-                    message: "Error finding books!"
-                })
+                    message: "Error finding books!",
+                });
                 return;
             }
-        })
+        });
         res.json({
             status: "success",
             message: "Got user books",
-            userBooks
-        })
+            userBooks,
+        });
     } catch (err) {
         res.json({
             status: "error",
-            message: "Error fetching books!"
-        })
+            message: "Error fetching books!",
+        });
     }
-}
+};
 
-module.exports.updateProfile = async (req, res) => {
-    try {
-        const userId = req.user.id;
-        let user = await User.findById(userId);
-
-        let check = false;
-        User.multerUpload(req, res, (err) => {
+module.exports.updateProfile = (req, res) => {
+    let check = false;
+    User.multerUpload(req, res, async (err) => {
+        try {
             if (err) {
                 if (err instanceof multer.MulterError) {
                     console.log("Multer Error: ", err);
@@ -51,6 +48,10 @@ module.exports.updateProfile = async (req, res) => {
                 });
                 return;
             }
+
+            let data = req.body;
+            const userId = data.userid;
+            let user = await User.findById(userId);
 
             if (req.file) {
                 if (user.avatar) {
@@ -76,7 +77,6 @@ module.exports.updateProfile = async (req, res) => {
                 check = true;
             }
 
-            let data = req.body;
             if (data.firstname) {
                 user.firstname = data.firstname;
                 check = true;
@@ -126,12 +126,12 @@ module.exports.updateProfile = async (req, res) => {
                 message: "Sucessfully updated profile!",
                 user,
             });
-        });
-    } catch (err) {
-        console.log(err);
-        res.json({
-            status: "error",
-            message: "Error occured while fetching data!"
-        })
-    }
+        } catch (err) {
+            console.log(err);
+            res.json({
+                status: "error",
+                message: "Error occured in User.multerupload!",
+            });
+        }
+    });
 };

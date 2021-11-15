@@ -3,79 +3,94 @@ const User = require("../models/user");
 const multer = require("multer");
 
 module.exports.addBook = async (req, res) => {
-    const newBook = Object.create(null  );
+    const newBook = Object.create(null);
 
-    Book.multerUpload(req, res, (err) => {
-        if (err) {
-            console.log("Error: ", err);
-            res.json({
-                status: "error",
-                message: "Error occured while uploading file!",
-            });
-            return;
-        }
+    try {
+        Book.multerUpload(req, res, (err) => {
+            if (err) {
+                console.log("Error: ", err);
+                res.json({
+                    status: "error",
+                    message: "Error occured while uploading file!",
+                });
+                return;
+            }
 
-        if(req.files.book_image_input){
-            newBook.pdflink = Book.bookPath + "/" + toString(req.files.book_image_input.filename).split(" ").join("-");
-        }
+            if (req.files.book_image_input && req.files.book_image_input.length) {
+                newBook.bookimg = Book.thumbPath + "/" 
+                                    + req.files.book_image_input[0].filename.split(" ").join("-");
+            } else {
+                console.log("No book file provided");
+            }
 
-        if(req.files.book_file_input){
-            newBook.bookimg = Book.thumbPath + "/" + toString(req.files.book_file_input.filename).split(" ").join("-");
-        }
+            if (req.files.book_file_input && req.files.book_file_input.length) {
+                newBook.pdflink = Book.bookPath + "/" 
+                                    + req.files.book_file_input[0].filename.split(" ").join("-");
+            } else {
+                console.log("No book image provided");
+            }
 
-        if (req.file) {
-        }
+            let data = req.body;
+            if (data.book_author_input) {
+                newBook.author = data.book_author_input;
+            }
 
-        let data = req.body;
-        if (data.book_author_input) {
-            newBook.author = data.book_author_input;
-        }
+            if (data.book_name_input) {
+                newBook.name = data.book_name_input;
+            }
 
-        if (data.book_name_input) {
-            newBook.name = data.book_name_input;
-        }
+            if (data.genre && data.genre.length) {
+                newBook.genre = data.genre.split(",");
+            }
 
-        if (data.genre && data.genre.length) {
-            newBook.genre = data.genre.split(",");
-        }
+            Book.create(newBook, async (err, book) => {
+                try {
+                    if (err) {
+                        console.log(err);
+                        res.json({
+                            status: "error",
+                            message: "Error creating file in DB",
+                        });
+                        return;
+                    }
 
-        Book.create(newBook, async (err, book) => {
-            try {
-                if (err) {
+                    if (data.userid) {
+                        const userId = data.userid;
+                        const user = await User.findById(userId);
+                        user.mybooks.push(book.id);
+                        user.save();
+                    } else {
+                        console.log("No user to add the book to, bookController.");
+                    }
+
+                    res.json({
+                        status: "success",
+                        message: "Book added successfully!",
+                    });
+                } catch (err) {
                     console.log(err);
                     res.json({
                         status: "error",
-                        message: "Error creating file in DB",
+                        message: "Error occured during fectching data!",
                     });
-                    return;
                 }
+            });
 
-                if (req.user) {
-                    const userId = req.user.id;
-                    const user = await User.findById(userId);
-                    user.mybooks.push(book.id);
-                    user.save();
-                }
-
-                res.json({
-                    status: "success",
-                    message: "Book added successfully!",
-                });
-            } catch (err) {
-                console.log(err);
-                res.json({
-                    status: "error",
-                    message: "Error occured during fectching data!",
-                });
-            }
+            console.log("Book created");
         });
-    });
+    } catch (err) {
+        console.log("Error: ", err);
+        res.json({
+            status: "error",
+            message: "Error occured while uploading!",
+        });
+    }
 };
 
 module.exports.getAll = async (req, res) => {
     try {
         const allBooks = await Book.find({});
-        console.log(allBooks);
+        // console.log("From book controller getAll: ", allBooks);
         res.json({
             status: "success",
             allBooks,
@@ -90,7 +105,7 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.markFavourite = async (req, res) => {
     try {
-        const userId = req.user.id;
+        const userId = req.body.userid;
         await User.findById(userId).favourites.push(req.body.bookid);
         res.json({
             status: "success",
@@ -106,7 +121,7 @@ module.exports.markFavourite = async (req, res) => {
 
 module.exports.markNotFavourite = async (req, res) => {
     try {
-        const userId = req.user.id;
+        const userId = req.body.userid;
         await User.updateOne({ _id: userId }, { $pullAll: { favourites: [req.body.bookid] } });
         res.json({
             status: "success",
