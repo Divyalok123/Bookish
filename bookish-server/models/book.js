@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const BOOK_PATH = '/public/books'; //book storage path
 const THUMB_PATH = '/public/thumbs'; //thumbnail storage path
-const { v4: uuidv4 } = require('uuid');
+const {v4: uuidv4} = require('uuid');
 
 const bookSchema = new Schema({
     name: {
@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
             cb(null, path.join(__dirname, '..', THUMB_PATH));
     },
     filename: (req, file, cb) => {
-        cb(null, uuidv4() + '-' + Date.now() + file.originalname);
+        cb(null, uuidv4() + path.extname(file.originalname));
     }
 });
 

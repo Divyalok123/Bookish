@@ -15,11 +15,11 @@
 
 .loader_icon {
     margin: 10px 0;
-    font-size: 50px;
+    font-size: 55px;
 }
 
 .loader_text {
     padding: 10px;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 20px;
 }

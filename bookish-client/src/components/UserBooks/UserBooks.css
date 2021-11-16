@@ -3,6 +3,13 @@
     margin: auto;
 }
 
+@media screen and (max-width: 1400px) {
+    
+    .userbooks_list {
+        width: 90%;
+    }
+}
+
 @media screen and (max-width: 900px) {
     
     .userbooks_list {

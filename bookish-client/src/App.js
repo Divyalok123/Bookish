@@ -1,10 +1,11 @@
-import "./App.css";
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Home, Books, About, Profile, UserBooks, AddBook, SignUp, Login, NotFound, ProfileUpdate } from './components/index';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import "./App.css";
 
 function App() {
+
     return (
         <div className="app">
             <BrowserRouter>
@@ -28,13 +29,15 @@ function App() {
                 </Switch>
             </BrowserRouter>
             <ToastContainer 
-                limit={5} 
-                autoClose={4000} 
+                limit={2} 
+                autoClose={2000} 
                 draggable 
                 pauseOnHover 
                 closeOnClick 
+                hideProgressBar
                 theme="dark" 
                 position="bottom-right"
+                pauseOnFocusLoss={false}
             />
         </div>
     );

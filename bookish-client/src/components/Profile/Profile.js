@@ -1,11 +1,12 @@
 import { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { Redirect } from "react-router";
+import {v4 as uuidv4} from 'uuid';
+import { AuthContext } from "../../context/AuthContext";
 import AddNav from "../../hoc/withNav";
 import dummyPerson from "../../assets/dummyPerson.png";
-import { AuthContext } from "../../context/AuthContext";
 import "./Profile.css";
-import { Redirect } from "react-router";
 
 class Profile extends Component {
     static contextType = AuthContext;
@@ -23,7 +24,6 @@ class Profile extends Component {
         const PF = process.env.REACT_APP_PROXY_URL;
 
         if (!this.context.user) {
-            console.log("here");
             return <Redirect to="/" />;
         }
 
@@ -34,7 +34,7 @@ class Profile extends Component {
                 <div className="profile_content">
                     <div className="profile_left f_yaldevi">
                         <div className="profile_bio_first">
-                            {console.log(PF + avatar)}
+                            {/* {console.log(PF + avatar)} */}
                             <img src={avatar ? PF + avatar : dummyPerson} alt="personimage" />
                             <div>
                                 <p>{firstname + " " + lastname}</p>
@@ -47,7 +47,7 @@ class Profile extends Component {
                                 {likes.length ? (
                                     <>
                                         {likes.map((like) => (
-                                            <span>{this.firstUp(like)}</span>
+                                            <span key={uuidv4()}>{this.firstUp(like)}</span>
                                         ))}
                                     </>
                                 ) : (
@@ -65,7 +65,7 @@ class Profile extends Component {
                                 {otherprofiles ? (
                                     <>
                                         {Object.keys(otherprofiles).map((profile) => (
-                                            <li>{otherprofiles[profile]}</li>
+                                            <li key={uuidv4()}>{otherprofiles[profile]}</li>
                                         ))}
                                     </>
                                 ) : (

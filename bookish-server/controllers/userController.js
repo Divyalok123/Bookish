@@ -4,36 +4,6 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-module.exports.getUserBooks = async (req, res) => {
-    try {
-        const userId = req.body.userid;
-        const user = await User.findById(userId);
-        const userBooks = [];
-        await user.mybooks.forEach(async (bookid) => {
-            try {
-                const book = await Book.findById(bookid);
-                userBooks.push(book);
-            } catch (err) {
-                res.json({
-                    status: "error",
-                    message: "Error finding books!",
-                });
-                return;
-            }
-        });
-        res.json({
-            status: "success",
-            message: "Got user books",
-            userBooks,
-        });
-    } catch (err) {
-        res.json({
-            status: "error",
-            message: "Error fetching books!",
-        });
-    }
-};
-
 module.exports.updateProfile = (req, res) => {
     let check = false;
     User.multerUpload(req, res, async (err) => {
@@ -135,3 +105,33 @@ module.exports.updateProfile = (req, res) => {
         }
     });
 };
+
+module.exports.getUserBooks = async (req, res) => {
+    try {
+        const userId = req.query.userid;
+        const user = await User.findById(userId);
+
+        let userBooks = [];
+
+        let books = user.mybooks.map(async (bookid) => {
+            const book = await Book.findById(bookid);
+            userBooks.push(book);
+        })
+
+        books = await Promise.all(books);
+
+        res.json({
+            status: "success",
+            message: "Got user books",
+            userBooks
+        });
+    } catch (err) {
+        console.log("Error (getUserBooks controller): ", err);
+        res.json({
+            status: "error",
+            message: "Error occured while getting user Books!",
+        });
+    }
+};
+
+module.exports.getFavourites = async (req, res) => {}

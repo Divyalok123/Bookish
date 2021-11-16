@@ -9,6 +9,7 @@ import "./Home.css";
 
 
 function Home(props) {
+
     useEffect(() => {
         document.title = "Bookish";
 
@@ -18,6 +19,10 @@ function Home(props) {
                 toast.success(message);
             else
                 toast.error(message);
+        }
+
+        return () => {
+            toast.clearWaitingQueue();
         }
     }, [props]);
 

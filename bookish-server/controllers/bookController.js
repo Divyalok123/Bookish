@@ -103,15 +103,26 @@ module.exports.getAll = async (req, res) => {
     }
 };
 
-module.exports.markFavourite = async (req, res) => {
+module.exports.handleFavourite = async (req, res) => {
     try {
         const userId = req.body.userid;
-        await User.findById(userId).favourites.push(req.body.bookid);
+        const bookId = req.body.bookid;
+        const user = await User.findById(userId);
+
+        if(user.favourites.includes(bookId))
+            user.favourites.pull(bookId);
+        else
+            user.favourites.push(bookId);
+
+        user.save();
+
         res.json({
             status: "success",
             message: "Book marked Favourite!",
+            user
         });
     } catch (err) {
+        console.log("Error (handleFavourite): ", err);
         res.json({
             status: "error",
             message: "Error marking favourite!",
@@ -119,18 +130,3 @@ module.exports.markFavourite = async (req, res) => {
     }
 };
 
-module.exports.markNotFavourite = async (req, res) => {
-    try {
-        const userId = req.body.userid;
-        await User.updateOne({ _id: userId }, { $pullAll: { favourites: [req.body.bookid] } });
-        res.json({
-            status: "success",
-            message: "Book marked Not Favourite!",
-        });
-    } catch (err) {
-        res.json({
-            status: "error",
-            message: "Error marking Not Favourite!",
-        });
-    }
-};

@@ -37,6 +37,7 @@
     box-shadow: 0 0 1px 1px gray;
     cursor: pointer;
     animation-name: updown;
+    animation-iteration-count: 1;
     animation-duration: 700ms;
     transition-duration: 200ms;
 }

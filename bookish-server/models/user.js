@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const multer = require('multer');
 const path = require('path');
 const AVATAR_PATH = '/public/avatars';
+const {v4: uuidv4} = require('uuid');
 
 const userSchema = new Schema({
     firstname: {
@@ -61,7 +62,7 @@ const storage = multer.diskStorage({
         cb(null, path.join(__dirname, '..', AVATAR_PATH));
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname.replace(/\.[^/.]+$/, "") + '-' + Date.now() + path.extname(file.originalname));
+        cb(null, uuidv4() + path.extname(file.originalname));
     }
 })
 
